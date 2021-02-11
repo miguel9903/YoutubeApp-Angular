@@ -2,6 +2,11 @@
     <div class="col">
         <h1 class="font-weight-light">YouTube videos</h1>
         <hr class="bg-danger">
+        <div class="text-center my-3" *ngIf="loading">
+            <div>
+                <i class="fas fa-spinner fa-spin"></i> Cargando...
+            </div>
+        </div>
         <div class="card-columns">
             <div class="card animate__animated animate__fadeInUp" *ngFor="let video of videos">
               <img class="card-img-top" [src]="video.thumbnails.high.url" [alt]="video.title">
@@ -25,6 +30,7 @@
 <div class="row">
     <div class="col text-center">
         <button (click)="cargarVideos()" 
-                class="btn btn-primary">Siguiente página</button>
+                class="btn btn-primary"
+                *ngIf="!loading">Siguiente página</button>
     </div>
 </div>

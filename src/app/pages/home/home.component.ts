@@ -11,6 +11,7 @@ import Swal from 'sweetalert2'
 export class HomeComponent implements OnInit {
 
   videos: Video[] = [];
+  loading: boolean = false;
 
   constructor( private youtubeService: YoutubeService ) { }
 
@@ -19,10 +20,12 @@ export class HomeComponent implements OnInit {
   }
 
   cargarVideos(): void {
+    this.loading = true;
     this.youtubeService.getVideos()
     .subscribe(res => {
       this.videos.push(...res);
       console.log(this.videos);
+      this.loading = false;
     });
   }
 
