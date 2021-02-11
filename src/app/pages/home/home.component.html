@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col">
+        <h1 class="font-weight-light">YouTube videos</h1>
+        <hr class="bg-danger">
+        <div class="card-columns">
+            <div class="card animate__animated animate__fadeInUp" *ngFor="let video of videos">
+              <img class="card-img-top" [src]="video.thumbnails.high.url" [alt]="video.title">
+              <div class="card-body">
+                <h5 class="card-title">{{ video.title }}</h5>
+                <div>
+                    <span class="d-block text-muted">
+                        <b>Autor: </b>{{ video.channelTitle }}
+                    </span>
+                    <span class="d-block text-muted">
+                        <b>Publicado:  </b>{{ video.publishedAt | date }}
+                    </span>
+                </div>
+                <button (click)="verVideo(video)" 
+                        class="btn btn-outline-primary btn-block mt-3">Ver video</button>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <button (click)="cargarVideos()" 
+                class="btn btn-primary">Siguiente página</button>
+    </div>
+</div>
